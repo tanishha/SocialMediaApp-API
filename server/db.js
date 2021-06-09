@@ -7,7 +7,6 @@ mongoose.connect(dbConfig.conxnUrl + '/' + dbConfig.dbName, {
 }, function (err, done) {
     if (err) {
         console.log('connecting error',err)
-        console.log(dbConfig.conxnUrl + '/' + dbConfig.dbName)
     } else {
         console.log('Database connection success')
     }
