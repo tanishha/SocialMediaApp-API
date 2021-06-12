@@ -17,10 +17,6 @@ app.use(express.urlencoded({ //(url encoded data(ie. html form ko data) )
 }))
 app.use(express.json()) //(for json)
 
-app.get('/', (req, res) => {
-    res.send("hey")
-})
-
 //load routing level middleware(mount)
 app.use('/api', apiRoute)
 app.use(function (req, res, next) { //for undefined request
