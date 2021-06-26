@@ -1,0 +1,3 @@
+# NodeJS specific #
+.env
+node_modules
