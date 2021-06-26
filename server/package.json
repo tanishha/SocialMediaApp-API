@@ -2,10 +2,9 @@
   "name": "socialmedia",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "nodemon index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +15,9 @@
     "mongoose": "^5.12.13",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.3.4"
   }
 }
