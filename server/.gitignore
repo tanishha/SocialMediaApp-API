@@ -1,3 +1,4 @@
 # NodeJS specific #
 .env
 node_modules
+issue.ts
