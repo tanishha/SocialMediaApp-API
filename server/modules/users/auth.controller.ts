@@ -1,6 +1,13 @@
 const UserModel = require("./users.model");
 const mapUserReq = require("./../../helpers/mapUserReq");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const configs = require("./../../configs/token");
+
+function createToken(data) {
+  let token = jwt.sign(data, configs.jwtSecret);
+  return token;
+}
 
 async function login(req, res, next) {
   await UserModel.findOne({
@@ -16,8 +23,14 @@ async function login(req, res, next) {
       );
 
       if (isPasswordMatch) {
+        let token = createToken({
+          _id: user._id,
+          name:user.username,
+          role: user.role,
+        });
         res.json({
           user,
+          token,
         });
       } else {
         next({
