@@ -94,9 +94,71 @@ async function deleteById(req, res, next) {
   });
 }
 
+async function follow(req, res, next) {
+  await usermodel.findById(req.params.id).exec(async function (err, users) {
+    if (err) {
+      return next(err);
+    }
+    if (users) {
+      if (req.loggedInUser.id !== req.params.id) {
+        const user = await usermodel.findById(req.params.id);
+        const currentUser = await usermodel.findById(req.loggedInUser.id);
+        if (!user.followers.includes(req.loggedInUser.id)) {
+          await user.updateOne({ $push: { followers: req.loggedInUser.id } });
+          await currentUser.updateOne({ $push: { followings: req.params.id } });
+          res.status(200).json("You started following this account");
+        } else {
+          res.status(403).json("You already follow this user");
+        }
+      } else {
+        return next({
+          msg: "You can't follow yourself",
+          status: 404,
+        });
+      }
+    } else {
+      next({
+        msg: "User not found",
+        status: 404,
+      });
+    }
+  });
+}
+async function unfollow(req, res, next) {
+  await usermodel.findById(req.params.id).exec(async function (err, users) {
+    if (err) {
+      return next(err);
+    }
+    if (users) {
+      if (req.loggedInUser.id !== req.params.id) {
+        const user = await usermodel.findById(req.params.id);
+        const currentUser = await usermodel.findById(req.loggedInUser.id);
+        if (user.followers.includes(req.loggedInUser.id)) {
+          await user.updateOne({ $pull: { followers: req.loggedInUser.id } });
+          await currentUser.updateOne({ $pull: { followings: req.params.id } });
+          res.status(200).json("You unfollowed this account");
+        } else {
+          res.status(403).json("You dont follow this user");
+        }
+      } else {
+        return next({
+          msg: "You can't unfollow yourself",
+          status: 404,
+        });
+      }
+    } else {
+      next({
+        msg: "User not found",
+        status: 404,
+      });
+    }
+  });
+}
 module.exports = {
   get,
   getById,
   deleteById,
   update,
+  follow,
+  unfollow
 };

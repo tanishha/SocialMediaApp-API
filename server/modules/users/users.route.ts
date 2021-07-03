@@ -8,4 +8,7 @@ UserRouter.route("/:id")
   .delete(UserCtrl.deleteById)
   .put(UserCtrl.update);
 
+UserRouter.route("/:id/follow").put(UserCtrl.follow);
+UserRouter.route("/:id/unfollow").put(UserCtrl.unfollow);
+
 module.exports = UserRouter;
