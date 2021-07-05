@@ -8,4 +8,5 @@ PostRouter.route("/:id")
   .put(Authenticate,PostCtrl.updatePost)
   .delete(Authenticate,PostCtrl.deletePost);
 
+PostRouter.route("/:id/like").put(Authenticate,PostCtrl.like)
 module.exports = PostRouter;
