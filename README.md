@@ -1,1 +1,1 @@
-# SocialMediaApp-Using-MERN
+# SocialMediaApp-API
