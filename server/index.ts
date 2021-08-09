@@ -38,10 +38,10 @@ app.use(function (err, req, res, next) {
   });
 });
 
-app.listen(3030, (err, done) => {
+app.listen(3000, (err, done) => {
   if (err) {
     console.log("Server listening failed");
   } else {
-    console.log("Server listening at port 3030");
+    console.log("Server listening at port 3000");
   }
 });
