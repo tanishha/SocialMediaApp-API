@@ -1,3 +1,6 @@
+/* eslint-disable sort-keys */
+/* eslint-disable require-atomic-updates */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const usermodel = require("./users.model");
 const mapUser = require("./../../helpers/mapUserReq");
 const bcryptpassword = require("bcrypt");

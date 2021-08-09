@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const UserRouter = require("express").Router();
 const UserCtrl = require("./users.controller");
 

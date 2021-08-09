@@ -49,7 +49,7 @@ app.use((err, req, res) => {
 });
 
 app.listen(
-    3000,
+    3030,
     (err) => {
 
         if (err) {
@@ -58,7 +58,7 @@ app.listen(
 
         } else {
 
-            console.log("Server listening at port 3000");
+            console.log("Server listening at port 3030");
 
         }
 

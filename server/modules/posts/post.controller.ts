@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable sort-keys */
 const postmodel = require("./post.model");
 const mapPostReq = require("./../../helpers/mapPostReq");
 

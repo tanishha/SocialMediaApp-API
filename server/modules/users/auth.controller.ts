@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-var-requires */
 const UserModel = require("./users.model");
 const mapUserReq = require("./../../helpers/mapUserReq");
 const bcrypt = require("bcrypt");
@@ -5,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const configs = require("./../../configs/token");
 
 function createToken(data) {
-  let token = jwt.sign(data, configs.jwtSecret);
+  const token = jwt.sign(data, configs.jwtSecret);
   return token;
 }
 
@@ -17,15 +20,15 @@ async function login(req, res, next) {
       return next(err);
     }
     if (user) {
-      var isPasswordMatch = await bcrypt.compare(
+      const isPasswordMatch = await bcrypt.compare(
         req.body.password,
         user.password
       );
 
       if (isPasswordMatch) {
-        let token = createToken({
+        const token = createToken({
           _id: user._id,
-          name:user.username,
+          name: user.username,
           role: user.role,
         });
         res.json({
@@ -60,6 +63,7 @@ async function register(req, res, next) {
     })
     .catch(function (err) {
       next(err);
+      console.log("error", err);
     });
 }
 

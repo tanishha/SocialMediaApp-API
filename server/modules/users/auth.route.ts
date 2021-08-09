@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const AuthCtrl = require("./auth.controller");
 const AuthRouter = require("express").Router();
 

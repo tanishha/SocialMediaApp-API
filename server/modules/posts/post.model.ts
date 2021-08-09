@@ -1,4 +1,6 @@
-//schema definition
+/* eslint-disable sort-keys */
+/* eslint-disable @typescript-eslint/no-var-requires */
+// Schema definition
 const Mongoose = require("mongoose");
 
 const PostSchema = new Mongoose.Schema(
